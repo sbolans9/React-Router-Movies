@@ -3,11 +3,12 @@ import axios from 'axios';
 import {useParams} from "react-router-dom"
 
 const Movie = (props) => {
-  const [movie, setMovie] = useState([]);
-
+  const [movie, setMovie] = useState();
+  console.log(movie)
   const params = useParams();
   console.log(params);
   console.log(props.movies);
+
 
   props.movies.find(item => `item.id` === params.id);
   useEffect(() => {
@@ -24,19 +25,24 @@ const Movie = (props) => {
         });
 
   },[params.id]);
+
+
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
   //   const addToSavedList = props.addToSavedList;
   //   addToSavedList(movie)
   // }
+
   console.log(movie)
+
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
-  console.log(movie)
+
   const { title, director, metascore, stars } = movie;
   return (
     <div className="save-wrapper">
+      {console.log(movie)}
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
@@ -46,15 +52,12 @@ const Movie = (props) => {
           Metascore: <strong>{metascore}</strong>
         </div>
         <h3>Actors</h3>
-
-        {props.movies.map(star => (
-          <div key={params.id} className="movie-star">
-            {star.stars}
-            {console.log(star.stars)}
+        {console.log(stars)}
+        {stars.map(star => (
+          <div key={star} className="movie-star">
+            {star}
           </div>
         ))}
-
-
       </div>
       <div className="save-button">Save</div>
     </div>

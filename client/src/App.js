@@ -33,7 +33,7 @@ const App = () => {
         <SavedList list={savedList}/>
         {/* <Route path='/'><MovieList movies={movieList}/></Route> */}
         {/* <Route path='/' render={() => <MovieCard movies={movieList}/>}/> */}
-        <Route exact path ='/' render={() => <MovieList movies={movieList}/>}/>
+        <Route exact  path='/' render={() => <MovieList movies={movieList}/>}/>
         <Route path='/movies/:id' render={() => <Movie movies={movieList}/>}/>
       </div>
   );
